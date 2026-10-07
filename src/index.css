@@ -1,0 +1,61 @@
+@import "tailwindcss";
+
+@theme {
+  --font-mono: 'JetBrains Mono', 'Fira Code', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  
+  --color-lab-bg: #090d16;
+  --color-lab-card: #0f1422;
+  --color-lab-card-hover: #151c2e;
+  --color-lab-border: #1e293b;
+  --color-lab-border-subtle: #172033;
+  --color-lab-muted: #64748b;
+  --color-lab-text: #e2e8f0;
+  
+  --color-terminal-bg: #090d14;
+  --color-terminal-bar: #0f1420;
+  --color-terminal-border: #1e2738;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #090d16;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #334155;
+}
+
+/* Monospace code styling */
+code, kbd, samp, pre {
+  font-family: var(--font-mono);
+}
+
+/* Terminal scanline and subtle glow utilities */
+.glow-cyan-sm {
+  box-shadow: 0 0 15px -3px rgba(56, 189, 248, 0.15);
+}
+
+.glow-emerald-sm {
+  box-shadow: 0 0 15px -3px rgba(52, 211, 153, 0.15);
+}
+
+.glow-amber-sm {
+  box-shadow: 0 0 15px -3px rgba(245, 158, 11, 0.15);
+}
+
+/* Subtle dot grid pattern */
+.bg-grid-pattern {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
