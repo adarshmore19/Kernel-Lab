@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Activity, Play, ArrowRight, RotateCcw, Info, Terminal, Cpu } from 'lucide-react';
+import { Activity, RotateCcw, Cpu, Terminal } from 'lucide-react';
 
 type ProcessState = 'NEW' | 'READY' | 'RUNNING' | 'WAITING' | 'TERMINATED';
 
@@ -58,31 +58,31 @@ export const ProcessLifecycleLab: React.FC = () => {
   };
 
   const stateColors: Record<ProcessState, { bg: string; border: string; text: string }> = {
-    NEW: { bg: 'bg-blue-950/40', border: 'border-blue-600/60', text: 'text-blue-300' },
-    READY: { bg: 'bg-cyan-950/40', border: 'border-cyan-600/60', text: 'text-cyan-300' },
-    RUNNING: { bg: 'bg-emerald-950/40', border: 'border-emerald-500', text: 'text-emerald-300' },
-    WAITING: { bg: 'bg-amber-950/40', border: 'border-amber-600/60', text: 'text-amber-300' },
-    TERMINATED: { bg: 'bg-slate-900', border: 'border-slate-700', text: 'text-slate-400' },
+    NEW: { bg: 'bg-[#ebf2f8]', border: 'border-[#c8d9e8]', text: 'text-[#1e4569]' },
+    READY: { bg: 'bg-[#e5eff8]', border: 'border-[#bcd3e6]', text: 'text-[#1e4569]' },
+    RUNNING: { bg: 'bg-[#edf5ed]', border: 'border-[#cbe0cc]', text: 'text-[#1e5327]' },
+    WAITING: { bg: 'bg-[#fbf3e4]', border: 'border-[#ecd6b2]', text: 'text-[#7d4e08]' },
+    TERMINATED: { bg: 'bg-[#eee8db]', border: 'border-[#dfd7c6]', text: 'text-[#78716c]' },
   };
 
   return (
     <div className="space-y-6 font-sans">
-      <div className="bg-[#0e1424] border border-[#1e2a42] rounded-xl p-5 shadow-xl space-y-4">
-        <div className="flex items-center justify-between pb-3 border-b border-[#1b253b]">
+      <div className="bg-[#fdfbf6] border border-[#dfd7c6] rounded-xl p-5 shadow-xs space-y-4">
+        <div className="flex items-center justify-between pb-3 border-b border-[#dfd7c6]">
           <div className="flex items-center gap-2">
-            <Activity className="w-5 h-5 text-cyan-400" />
+            <Activity className="w-5 h-5 text-[#2d5a88]" />
             <div>
-              <h3 className="text-sm font-bold text-slate-100 uppercase tracking-wider font-mono">
+              <h3 className="text-sm font-bold text-[#2c2825] uppercase tracking-wider font-mono">
                 Process State Machine & PCB Inspector
               </h3>
-              <p className="text-xs text-slate-400">
+              <p className="text-xs text-[#78716c]">
                 Simulate operating system kernel state transitions and observe Process Control Block updates.
               </p>
             </div>
           </div>
           <button
             onClick={handleReset}
-            className="text-xs text-slate-400 hover:text-cyan-400 flex items-center gap-1 font-mono transition-colors"
+            className="text-xs text-[#78716c] hover:text-[#2c2825] flex items-center gap-1 font-mono transition-colors"
           >
             <RotateCcw className="w-3.5 h-3.5" />
             Reset State
@@ -99,12 +99,12 @@ export const ProcessLifecycleLab: React.FC = () => {
                 key={s}
                 className={`p-3 rounded-lg border text-center transition-all ${
                   isActive
-                    ? `${c.bg} ${c.border} ring-2 ring-cyan-500/50 scale-105 shadow-lg`
-                    : 'bg-[#090d16] border-[#1b253b] opacity-60'
+                    ? `${c.bg} ${c.border} ring-2 ring-[#2d5a88] shadow-xs`
+                    : 'bg-[#f4f0e5] border-[#dfd7c6] opacity-70'
                 }`}
               >
                 <span className={`text-xs font-bold font-mono ${c.text}`}>{s}</span>
-                <span className="text-[10px] text-slate-400 block mt-1">
+                <span className="text-[10px] text-[#78716c] block mt-1">
                   {s === 'NEW' && 'Being created'}
                   {s === 'READY' && 'In ready queue'}
                   {s === 'RUNNING' && 'Executing on CPU'}
@@ -117,8 +117,8 @@ export const ProcessLifecycleLab: React.FC = () => {
         </div>
 
         {/* Transition Controls */}
-        <div className="p-4 bg-[#080c16] border border-[#1b253b] rounded-lg space-y-3 font-mono">
-          <span className="text-xs text-slate-400 uppercase tracking-wider block">
+        <div className="p-4 bg-[#f4f0e5] border border-[#dfd7c6] rounded-lg space-y-3 font-mono">
+          <span className="text-xs text-[#78716c] uppercase tracking-wider block font-semibold">
             Trigger OS Kernel Transition:
           </span>
 
@@ -126,7 +126,7 @@ export const ProcessLifecycleLab: React.FC = () => {
             {state === 'NEW' && (
               <button
                 onClick={() => updateState('READY', 'admit()', 'Process admitted into Ready Queue by Long-Term Scheduler.')}
-                className="px-3 py-1.5 bg-cyan-600 hover:bg-cyan-500 text-white rounded font-semibold transition-all"
+                className="px-3 py-1.5 bg-[#2d5a88] hover:bg-[#23476d] text-white rounded font-medium transition-colors shadow-2xs"
               >
                 Admit to Ready Queue &rarr;
               </button>
@@ -135,7 +135,7 @@ export const ProcessLifecycleLab: React.FC = () => {
             {state === 'READY' && (
               <button
                 onClick={() => updateState('RUNNING', 'dispatch()', 'Short-Term Scheduler dispatched process to CPU.')}
-                className="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded font-semibold transition-all"
+                className="px-3 py-1.5 bg-[#1e5327] hover:bg-[#153f1d] text-white rounded font-medium transition-colors shadow-2xs"
               >
                 Dispatch to CPU &rarr;
               </button>
@@ -145,19 +145,19 @@ export const ProcessLifecycleLab: React.FC = () => {
               <>
                 <button
                   onClick={() => updateState('READY', 'interrupt()', 'Quantum expired or higher priority process preempted CPU.')}
-                  className="px-3 py-1.5 bg-amber-600 hover:bg-amber-500 text-white rounded font-semibold transition-all"
+                  className="px-3 py-1.5 bg-[#b45309] hover:bg-[#92400e] text-white rounded font-medium transition-colors shadow-2xs"
                 >
                   Interrupt / Preempt (Timer Expired)
                 </button>
                 <button
                   onClick={() => updateState('WAITING', 'io_call()', 'Process requested disk read or network socket; blocked on I/O.')}
-                  className="px-3 py-1.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded font-semibold transition-all"
+                  className="px-3 py-1.5 bg-[#4338ca] hover:bg-[#3730a3] text-white rounded font-medium transition-colors shadow-2xs"
                 >
                   I/O or Event Wait (sys_read)
                 </button>
                 <button
                   onClick={() => updateState('TERMINATED', 'exit()', 'Process finished execution and called sys_exit(0).')}
-                  className="px-3 py-1.5 bg-rose-600 hover:bg-rose-500 text-white rounded font-semibold transition-all"
+                  className="px-3 py-1.5 bg-[#9f1239] hover:bg-[#881337] text-white rounded font-medium transition-colors shadow-2xs"
                 >
                   Terminate (exit)
                 </button>
@@ -167,14 +167,14 @@ export const ProcessLifecycleLab: React.FC = () => {
             {state === 'WAITING' && (
               <button
                 onClick={() => updateState('READY', 'io_complete()', 'I/O interrupt received; transferred data to user buffer. Moved back to Ready Queue.')}
-                className="px-3 py-1.5 bg-cyan-600 hover:bg-cyan-500 text-white rounded font-semibold transition-all"
+                className="px-3 py-1.5 bg-[#2d5a88] hover:bg-[#23476d] text-white rounded font-medium transition-colors shadow-2xs"
               >
                 I/O Complete (Hardware Interrupt)
               </button>
             )}
 
             {state === 'TERMINATED' && (
-              <span className="text-slate-500 text-xs py-1">
+              <span className="text-[#78716c] text-xs py-1">
                 Process is terminated. Click Reset State to simulate another process.
               </span>
             )}
@@ -184,47 +184,49 @@ export const ProcessLifecycleLab: React.FC = () => {
         {/* Live PCB Inspector & Transition Logs */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 font-mono text-xs">
           {/* PCB Panel */}
-          <div className="p-4 bg-[#080c16] border border-[#1b253b] rounded-lg space-y-2">
-            <div className="flex items-center justify-between pb-2 border-b border-slate-900">
-              <span className="text-slate-400 font-bold uppercase flex items-center gap-1.5">
-                <Cpu className="w-3.5 h-3.5 text-cyan-400" />
+          <div className="p-4 bg-[#f4f0e5] border border-[#dfd7c6] rounded-lg space-y-2">
+            <div className="flex items-center justify-between pb-2 border-b border-[#dfd7c6]">
+              <span className="text-[#2c2825] font-bold uppercase flex items-center gap-1.5">
+                <Cpu className="w-3.5 h-3.5 text-[#2d5a88]" />
                 PCB (Process Control Block)
               </span>
-              <span className="text-[10px] text-cyan-400">PID: {pcb.pid}</span>
+              <span className="text-[10px] font-mono text-[#1e4569] bg-[#ebf2f8] border border-[#c8d9e8] px-1.5 py-0.5 rounded font-semibold">
+                PID: {pcb.pid}
+              </span>
             </div>
-            <div className="space-y-1 text-slate-300">
+            <div className="space-y-1 text-[#2c2825]">
               <div className="flex justify-between">
-                <span className="text-slate-500">State:</span>
-                <span className="font-bold text-cyan-300">{pcb.state}</span>
+                <span className="text-[#78716c]">State:</span>
+                <span className="font-bold text-[#1e4569]">{pcb.state}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-slate-500">Program Counter:</span>
-                <span className="text-slate-200">{pcb.programCounter}</span>
+                <span className="text-[#78716c]">Program Counter:</span>
+                <span className="text-[#2c2825]">{pcb.programCounter}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-slate-500">Registers:</span>
-                <span className="text-slate-200">
+                <span className="text-[#78716c]">Registers:</span>
+                <span className="text-[#2c2825]">
                   R0={pcb.registers.R0}, SP={pcb.registers.SP}
                 </span>
               </div>
               <div className="flex justify-between">
-                <span className="text-slate-500">Priority:</span>
-                <span className="text-slate-200">{pcb.priority}</span>
+                <span className="text-[#78716c]">Priority:</span>
+                <span className="text-[#2c2825]">{pcb.priority}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-slate-500">Open File Descriptors:</span>
-                <span className="text-slate-200">{pcb.openFiles.length} files</span>
+                <span className="text-[#78716c]">Open File Descriptors:</span>
+                <span className="text-[#2c2825]">{pcb.openFiles.length} files</span>
               </div>
             </div>
           </div>
 
           {/* Kernel Event Log */}
-          <div className="p-4 bg-[#080c16] border border-[#1b253b] rounded-lg space-y-2">
-            <span className="text-slate-400 font-bold uppercase flex items-center gap-1.5 pb-2 border-b border-slate-900">
-              <Terminal className="w-3.5 h-3.5 text-emerald-400" />
+          <div className="p-4 bg-[#f4f0e5] border border-[#dfd7c6] rounded-lg space-y-2">
+            <span className="text-[#2c2825] font-bold uppercase flex items-center gap-1.5 pb-2 border-b border-[#dfd7c6]">
+              <Terminal className="w-3.5 h-3.5 text-[#78716c]" />
               Kernel Event Audit Log
             </span>
-            <div className="space-y-1 text-[11px] text-slate-400">
+            <div className="space-y-1 text-[11px] text-[#57534e]">
               {transitionLog.map((log, idx) => (
                 <div key={idx} className="leading-tight truncate">
                   {log}

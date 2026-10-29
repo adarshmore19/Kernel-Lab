@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useMemo, useRef } from 'react';
-import { Cpu, BarChart2, Play, Sparkles, BookOpen } from 'lucide-react';
+import { Cpu, BarChart2, Play } from 'lucide-react';
 import { AlgorithmType, Process, SchedulingResult } from '../types/scheduler';
 import { SCHEDULER_PRESETS } from '../engine/scheduling/presets';
-import { runScheduler, schedulers } from '../engine/scheduling';
+import { runScheduler } from '../engine/scheduling';
 import { ProcessInputTable } from '../components/scheduler/ProcessInputTable';
 import { GanttChart } from '../components/scheduler/GanttChart';
 import { SimulationControls } from '../components/scheduler/SimulationControls';
@@ -74,27 +74,27 @@ export const SchedulerLabPage: React.FC = () => {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6 font-sans">
       {/* Top Header & View Tabs */}
-      <div className="flex flex-wrap items-center justify-between gap-4 pb-4 border-b border-[#1b253b]">
+      <div className="flex flex-wrap items-center justify-between gap-4 pb-4 border-b border-[#dfd7c6]">
         <div>
           <div className="flex items-center gap-2">
-            <Cpu className="w-6 h-6 text-cyan-400" />
-            <h1 className="text-xl sm:text-2xl font-extrabold text-white tracking-tight">
+            <Cpu className="w-6 h-6 text-[#2d5a88]" />
+            <h1 className="text-xl sm:text-2xl font-bold text-[#2c2825] tracking-tight">
               CPU Scheduling Simulator & Visualizer
             </h1>
           </div>
-          <p className="text-xs text-slate-400 mt-1">
+          <p className="text-xs text-[#78716c] mt-1">
             Experiment with CPU scheduling algorithms, analyze animated Gantt charts, and compare performance metrics.
           </p>
         </div>
 
         {/* View Switcher: Simulator vs Comparison */}
-        <div className="flex items-center gap-1 bg-[#0e1424] border border-[#1e2a42] p-1 rounded-xl">
+        <div className="flex items-center gap-1 bg-[#eee8db] border border-[#dfd7c6] p-1 rounded-xl">
           <button
             onClick={() => setActiveSubTab('simulator')}
             className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-semibold font-mono transition-all ${
               activeSubTab === 'simulator'
-                ? 'bg-cyan-950 text-cyan-300 border border-cyan-800/60 shadow-sm'
-                : 'text-slate-400 hover:text-slate-200'
+                ? 'bg-[#fdfbf6] text-[#2d5a88] border border-[#dfd7c6] shadow-xs'
+                : 'text-[#57534e] hover:text-[#2c2825]'
             }`}
           >
             <Play className="w-3.5 h-3.5" />
@@ -105,8 +105,8 @@ export const SchedulerLabPage: React.FC = () => {
             onClick={() => setActiveSubTab('compare')}
             className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-semibold font-mono transition-all ${
               activeSubTab === 'compare'
-                ? 'bg-cyan-950 text-cyan-300 border border-cyan-800/60 shadow-sm'
-                : 'text-slate-400 hover:text-slate-200'
+                ? 'bg-[#fdfbf6] text-[#2d5a88] border border-[#dfd7c6] shadow-xs'
+                : 'text-[#57534e] hover:text-[#2c2825]'
             }`}
           >
             <BarChart2 className="w-3.5 h-3.5" />

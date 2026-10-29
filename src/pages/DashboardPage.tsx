@@ -9,11 +9,8 @@ import {
   Layers,
   ArrowRight,
   Trophy,
-  CheckCircle2,
   Clock,
-  Sparkles,
-  Play,
-  RotateCcw,
+  Info,
 } from 'lucide-react';
 import { NavTab } from '../components/common/Navbar';
 import { CURRICULUM_MODULES } from '../data/curriculum/modules';
@@ -47,7 +44,7 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({
       desc: 'Unix architectures, kernel vs user space, rings, and FHS.',
       tab: 'linux' as NavTab,
       targetId: 'what-is-linux',
-      icon: <Cpu className="w-5 h-5 text-cyan-400" />,
+      icon: <Cpu className="w-5 h-5 text-[#2d5a88]" />,
       tag: 'Module 1',
     },
     {
@@ -55,7 +52,7 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({
       desc: 'Master pwd, ls -la, cd .., tree, and absolute vs relative paths.',
       tab: 'linux' as NavTab,
       targetId: 'nav-basics',
-      icon: <Compass className="w-5 h-5 text-emerald-400" />,
+      icon: <Compass className="w-5 h-5 text-[#1e5327]" />,
       tag: 'Module 2',
     },
     {
@@ -63,7 +60,7 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({
       desc: 'Create, duplicate, move, inspect and safely remove filesystem nodes.',
       tab: 'linux' as NavTab,
       targetId: 'creating-files-dirs',
-      icon: <FolderTree className="w-5 h-5 text-amber-400" />,
+      icon: <FolderTree className="w-5 h-5 text-[#b45309]" />,
       tag: 'Module 3',
     },
     {
@@ -71,14 +68,14 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({
       desc: 'Interactive POSIX permission triplets, octal calculation, and chmod.',
       tab: 'linux' as NavTab,
       targetId: 'posix-permission-model',
-      icon: <ShieldCheck className="w-5 h-5 text-rose-400" />,
+      icon: <ShieldCheck className="w-5 h-5 text-[#9f1239]" />,
       tag: 'Module 4',
     },
     {
       title: 'CPU Scheduling Lab',
       desc: 'Simulate FCFS, SJF, SRTF, Round Robin & Priority with live Gantt charts.',
       tab: 'scheduler' as NavTab,
-      icon: <Cpu className="w-5 h-5 text-indigo-400" />,
+      icon: <Cpu className="w-5 h-5 text-[#4338ca]" />,
       tag: 'Scheduler',
     },
     {
@@ -86,21 +83,21 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({
       desc: 'Inspect PID trees, top, signals, and simulated daemon management.',
       tab: 'linux' as NavTab,
       targetId: 'process-lifecycle',
-      icon: <Activity className="w-5 h-5 text-purple-400" />,
+      icon: <Activity className="w-5 h-5 text-[#6b21a8]" />,
       tag: 'Module 5',
     },
     {
       title: 'Process Lifecycle Lab',
       desc: 'Interactive 5-state machine: New, Ready, Running, Waiting, Terminated.',
       tab: 'labs' as NavTab,
-      icon: <Activity className="w-5 h-5 text-emerald-400" />,
+      icon: <Activity className="w-5 h-5 text-[#1e5327]" />,
       tag: 'OS Lab',
     },
     {
       title: 'Virtual Memory Paging',
       desc: 'FIFO, LRU, Optimal page replacement simulator and fault analyzer.',
       tab: 'labs' as NavTab,
-      icon: <Layers className="w-5 h-5 text-cyan-400" />,
+      icon: <Layers className="w-5 h-5 text-[#2d5a88]" />,
       tag: 'OS Lab',
     },
   ];
@@ -108,28 +105,28 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8 font-sans">
       {/* Hero / Continue Learning Section */}
-      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-[#0d1629] via-[#0b1222] to-[#070b16] border border-[#1e2a42] p-6 sm:p-8 shadow-2xl">
+      <div className="relative overflow-hidden rounded-2xl bg-[#fdfbf6] border border-[#dfd7c6] p-6 sm:p-8 shadow-xs">
         <div className="relative z-10 max-w-3xl space-y-4">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-950/80 border border-cyan-800/50 text-cyan-300 text-xs font-mono font-medium">
-            <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#ebf2f8] border border-[#c8d9e8] text-[#1e4569] text-xs font-mono font-medium">
+            <Info className="w-3.5 h-3.5 text-[#2d5a88]" />
             <span>Interactive Operating Systems & Linux Workbench</span>
           </div>
 
-          <h1 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight">
+          <h1 className="text-2xl sm:text-4xl font-extrabold text-[#2c2825] tracking-tight leading-tight">
             Master Linux Systems & <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-emerald-400 to-amber-300">
+            <span className="text-[#2d5a88]">
               CPU Scheduling Internals
             </span>
           </h1>
 
-          <p className="text-sm sm:text-base text-slate-300 leading-relaxed font-sans max-w-2xl">
+          <p className="text-sm sm:text-base text-[#57534e] leading-relaxed font-sans max-w-2xl">
             KernelLab combines an authentic in-memory Fish terminal, sandboxed POSIX virtual filesystem, and a deterministic CPU scheduling engine for hands-on OS mastery.
           </p>
 
           <div className="pt-2 flex flex-wrap items-center gap-3">
             <button
               onClick={() => onNavigate('linux')}
-              className="px-5 py-2.5 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white rounded-xl text-xs sm:text-sm font-semibold flex items-center gap-2 shadow-lg shadow-cyan-500/20 transition-all active:scale-95"
+              className="px-5 py-2.5 bg-[#2d5a88] hover:bg-[#23476d] text-white rounded-xl text-xs sm:text-sm font-semibold flex items-center gap-2 shadow-xs transition-colors active:scale-95"
             >
               <Terminal className="w-4 h-4" />
               <span>Resume Linux Curriculum</span>
@@ -138,40 +135,37 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({
 
             <button
               onClick={() => onNavigate('scheduler')}
-              className="px-5 py-2.5 bg-[#121a2d] hover:bg-[#18233a] border border-[#212f4d] text-slate-200 rounded-xl text-xs sm:text-sm font-semibold flex items-center gap-2 transition-all"
+              className="px-5 py-2.5 bg-[#fdfbf6] hover:bg-[#f5f0e1] border border-[#dfd7c6] text-[#2c2825] rounded-xl text-xs sm:text-sm font-semibold flex items-center gap-2 transition-colors"
             >
-              <Cpu className="w-4 h-4 text-emerald-400" />
+              <Cpu className="w-4 h-4 text-[#1e5327]" />
               <span>Launch Scheduler Simulator</span>
             </button>
           </div>
         </div>
-
-        {/* Ambient background grid */}
-        <div className="absolute inset-0 bg-grid-pattern opacity-30 pointer-events-none" />
       </div>
 
       {/* Overview Progress Cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
         {/* Linux Curriculum Card */}
-        <div className="bg-[#0e1424] border border-[#1e2a42] rounded-xl p-5 shadow-xl space-y-4">
+        <div className="bg-[#fdfbf6] border border-[#dfd7c6] rounded-xl p-5 shadow-xs space-y-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <Terminal className="w-5 h-5 text-cyan-400" />
-              <h3 className="font-bold text-sm text-slate-100">Linux Curriculum</h3>
+              <Terminal className="w-5 h-5 text-[#2d5a88]" />
+              <h3 className="font-bold text-sm text-[#2c2825]">Linux Curriculum</h3>
             </div>
-            <span className="text-xs font-mono font-bold text-cyan-400">
+            <span className="text-xs font-mono font-bold text-[#2d5a88]">
               {lessonsPercentage}%
             </span>
           </div>
 
           <div className="space-y-2">
-            <div className="w-full bg-[#080c16] h-2 rounded-full overflow-hidden border border-[#1b253b]">
+            <div className="w-full bg-[#eee8db] h-2 rounded-full overflow-hidden border border-[#dfd7c6]">
               <div
-                className="bg-gradient-to-r from-cyan-500 to-blue-500 h-full transition-all duration-300"
+                className="bg-[#2d5a88] h-full transition-all duration-300"
                 style={{ width: `${lessonsPercentage}%` }}
               />
             </div>
-            <div className="flex items-center justify-between text-xs text-slate-400 font-mono">
+            <div className="flex items-center justify-between text-xs text-[#78716c] font-mono">
               <span>{completedLessons.length} / {totalLessons} Lessons Finished</span>
               <span>{completedChallenges.length} Challenges Solved</span>
             </div>
@@ -179,7 +173,7 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({
 
           <button
             onClick={() => onNavigate('linux')}
-            className="w-full py-2 bg-[#121a2d] hover:bg-[#18233a] border border-[#1b253b] rounded-lg text-xs font-semibold text-cyan-300 flex items-center justify-center gap-1.5 transition-colors"
+            className="w-full py-2 bg-[#f4f0e5] hover:bg-[#eae4d5] border border-[#dfd7c6] rounded-lg text-xs font-semibold text-[#2d5a88] flex items-center justify-center gap-1.5 transition-colors"
           >
             <span>Open Course Modules</span>
             <ArrowRight className="w-3.5 h-3.5" />
@@ -187,24 +181,24 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({
         </div>
 
         {/* CPU Scheduling Status Card */}
-        <div className="bg-[#0e1424] border border-[#1e2a42] rounded-xl p-5 shadow-xl space-y-4">
+        <div className="bg-[#fdfbf6] border border-[#dfd7c6] rounded-xl p-5 shadow-xs space-y-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <Cpu className="w-5 h-5 text-emerald-400" />
-              <h3 className="font-bold text-sm text-slate-100">CPU Scheduler Lab</h3>
+              <Cpu className="w-5 h-5 text-[#1e5327]" />
+              <h3 className="font-bold text-sm text-[#2c2825]">CPU Scheduler Lab</h3>
             </div>
-            <span className="text-xs font-mono text-emerald-400 bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-800/40">
+            <span className="text-xs font-mono text-[#1e5327] bg-[#edf5ed] px-2 py-0.5 rounded border border-[#cbe0cc] font-semibold">
               6 Algorithms
             </span>
           </div>
 
-          <p className="text-xs text-slate-300 leading-relaxed font-sans">
+          <p className="text-xs text-[#57534e] leading-relaxed font-sans">
             Preemptive & non-preemptive algorithms with live Gantt scrubber, animated ready queues, and CT/TAT/WT/RT metrics.
           </p>
 
           <button
             onClick={() => onNavigate('scheduler')}
-            className="w-full py-2 bg-[#121a2d] hover:bg-[#18233a] border border-[#1b253b] rounded-lg text-xs font-semibold text-emerald-300 flex items-center justify-center gap-1.5 transition-colors"
+            className="w-full py-2 bg-[#f4f0e5] hover:bg-[#eae4d5] border border-[#dfd7c6] rounded-lg text-xs font-semibold text-[#1e5327] flex items-center justify-center gap-1.5 transition-colors"
           >
             <span>Simulate Algorithms</span>
             <ArrowRight className="w-3.5 h-3.5" />
@@ -212,25 +206,25 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({
         </div>
 
         {/* User Lab Achievements Card */}
-        <div className="bg-[#0e1424] border border-[#1e2a42] rounded-xl p-5 shadow-xl space-y-4">
+        <div className="bg-[#fdfbf6] border border-[#dfd7c6] rounded-xl p-5 shadow-xs space-y-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <Trophy className="w-5 h-5 text-amber-400" />
-              <h3 className="font-bold text-sm text-slate-100">XP & Mastery</h3>
+              <Trophy className="w-5 h-5 text-[#b45309]" />
+              <h3 className="font-bold text-sm text-[#2c2825]">XP & Mastery</h3>
             </div>
-            <span className="text-xs font-mono font-bold text-amber-300">
+            <span className="text-xs font-mono font-bold text-[#7d4e08] bg-[#fbf3e4] px-2 py-0.5 rounded border border-[#ecd6b2]">
               Level {Math.floor(xp / 100) + 1}
             </span>
           </div>
 
-          <div className="p-3 bg-[#080c16] border border-[#1b253b] rounded-lg space-y-1">
+          <div className="p-3 bg-[#f4f0e5] border border-[#dfd7c6] rounded-lg space-y-1">
             <div className="flex justify-between text-xs">
-              <span className="text-slate-400">Total Experience:</span>
-              <span className="font-mono font-bold text-amber-300">{xp} XP</span>
+              <span className="text-[#78716c]">Total Experience:</span>
+              <span className="font-mono font-bold text-[#7d4e08]">{xp} XP</span>
             </div>
             <div className="flex justify-between text-xs">
-              <span className="text-slate-400">Next Level:</span>
-              <span className="font-mono text-slate-300">
+              <span className="text-[#78716c]">Next Level:</span>
+              <span className="font-mono text-[#2c2825] font-medium">
                 {(Math.floor(xp / 100) + 1) * 100 - xp} XP needed
               </span>
             </div>
@@ -238,7 +232,7 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({
 
           <button
             onClick={() => onNavigate('labs')}
-            className="w-full py-2 bg-[#121a2d] hover:bg-[#18233a] border border-[#1b253b] rounded-lg text-xs font-semibold text-amber-300 flex items-center justify-center gap-1.5 transition-colors"
+            className="w-full py-2 bg-[#f4f0e5] hover:bg-[#eae4d5] border border-[#dfd7c6] rounded-lg text-xs font-semibold text-[#7d4e08] flex items-center justify-center gap-1.5 transition-colors"
           >
             <span>Explore Concept Labs</span>
             <ArrowRight className="w-3.5 h-3.5" />
@@ -249,10 +243,10 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({
       {/* Quick Start Curriculum Cards */}
       <div className="space-y-4">
         <div className="flex items-center justify-between">
-          <h2 className="text-base font-bold text-slate-100 uppercase tracking-wider font-mono">
+          <h2 className="text-base font-bold text-[#2c2825] uppercase tracking-wider font-mono">
             Core Learning Modules & Laboratories
           </h2>
-          <span className="text-xs text-slate-400 font-mono">
+          <span className="text-xs text-[#78716c] font-mono">
             8 Modular Units Available
           </span>
         </div>
@@ -262,26 +256,26 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({
             <div
               key={idx}
               onClick={() => onNavigate(card.tab, card.targetId)}
-              className="p-5 rounded-xl bg-[#0e1424] border border-[#1e2a42] hover:border-cyan-700/60 hover:bg-[#12192c] transition-all cursor-pointer group flex flex-col justify-between space-y-3 shadow-lg"
+              className="p-5 rounded-xl bg-[#fdfbf6] border border-[#dfd7c6] hover:border-[#b8ad99] hover:bg-[#f5f0e1] transition-all cursor-pointer group flex flex-col justify-between space-y-3 shadow-xs"
             >
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
-                  <div className="p-2 rounded-lg bg-[#080c16] border border-[#1b253b] group-hover:scale-105 transition-transform">
+                  <div className="p-2 rounded-lg bg-[#f4f0e5] border border-[#dfd7c6] group-hover:scale-105 transition-transform">
                     {card.icon}
                   </div>
-                  <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-[#141d31] text-slate-300 border border-[#1b253b]">
+                  <span className="px-2 py-0.5 rounded text-[10px] font-mono font-medium bg-[#eee8db] text-[#57534e] border border-[#dfd7c6]">
                     {card.tag}
                   </span>
                 </div>
-                <h3 className="font-bold text-sm text-slate-100 group-hover:text-cyan-300 transition-colors">
+                <h3 className="font-bold text-sm text-[#2c2825] group-hover:text-[#2d5a88] transition-colors">
                   {card.title}
                 </h3>
-                <p className="text-xs text-slate-400 leading-relaxed font-sans">
+                <p className="text-xs text-[#57534e] leading-relaxed font-sans">
                   {card.desc}
                 </p>
               </div>
 
-              <div className="pt-2 flex items-center text-xs font-semibold text-cyan-400 gap-1 opacity-80 group-hover:opacity-100 group-hover:translate-x-1 transition-all font-mono">
+              <div className="pt-2 flex items-center text-xs font-semibold text-[#2d5a88] gap-1 opacity-90 group-hover:opacity-100 group-hover:translate-x-1 transition-all font-mono">
                 <span>Start Lab</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </div>
@@ -292,9 +286,9 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({
 
       {/* Recently Used Commands Banner */}
       {recentCommands.length > 0 && (
-        <div className="p-4 bg-[#0a0f1d] border border-[#1d273d] rounded-xl flex flex-wrap items-center justify-between gap-3 text-xs font-mono">
-          <div className="flex items-center gap-2 text-slate-400">
-            <Clock className="w-4 h-4 text-cyan-400" />
+        <div className="p-4 bg-[#fdfbf6] border border-[#dfd7c6] rounded-xl flex flex-wrap items-center justify-between gap-3 text-xs font-mono shadow-xs">
+          <div className="flex items-center gap-2 text-[#78716c]">
+            <Clock className="w-4 h-4 text-[#2d5a88]" />
             <span>Recently Simulated Commands:</span>
           </div>
           <div className="flex flex-wrap gap-2">
@@ -302,7 +296,7 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({
               <button
                 key={idx}
                 onClick={() => onNavigate('linux')}
-                className="px-2.5 py-1 bg-[#121a2d] hover:bg-cyan-950 border border-[#212f4d] text-cyan-300 rounded text-xs transition-colors"
+                className="px-2.5 py-1 bg-[#f4f0e5] hover:bg-[#eae4d5] border border-[#dfd7c6] text-[#2c2825] rounded text-xs transition-colors"
               >
                 {cmd}
               </button>

@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
-import { Plus, Trash2, Shuffle, Sparkles, RefreshCw, Settings2 } from 'lucide-react';
+import { Plus, Trash2, Shuffle } from 'lucide-react';
 import { AlgorithmType, Process } from '../../types/scheduler';
-import { SCHEDULER_PRESETS, SchedulerPreset } from '../../engine/scheduling/presets';
+import { SCHEDULER_PRESETS } from '../../engine/scheduling/presets';
 import { schedulers } from '../../engine/scheduling';
 
 const PROCESS_COLORS = [
-  '#38bdf8', // cyan
-  '#34d399', // emerald
-  '#f59e0b', // amber
-  '#a78bfa', // purple
-  '#f43f5e', // rose
-  '#06b6d4', // cyan-dark
-  '#84cc16', // lime
-  '#ec4899', // pink
+  '#60a5fa', // soft blue
+  '#34d399', // soft sage / emerald
+  '#fbbf24', // soft amber
+  '#a78bfa', // soft periwinkle
+  '#f87171', // soft coral
+  '#38bdf8', // soft sky
+  '#fb923c', // soft apricot
+  '#94a3b8', // soft slate
 ];
 
 interface ProcessInputTableProps {
@@ -94,13 +94,13 @@ export const ProcessInputTable: React.FC<ProcessInputTableProps> = ({
   const currentAlgoMeta = schedulers[algorithm];
 
   return (
-    <div className="bg-[#0e1424] border border-[#1e2a42] rounded-xl p-5 shadow-xl space-y-5">
+    <div className="bg-[#fdfbf6] border border-[#dfd7c6] rounded-xl p-5 shadow-xs space-y-5">
       {/* Top Configuration Bar */}
-      <div className="flex flex-wrap items-center justify-between gap-4 pb-4 border-b border-[#1b253b]">
+      <div className="flex flex-wrap items-center justify-between gap-4 pb-4 border-b border-[#dfd7c6]">
         {/* Algorithm Dropdown */}
         <div className="flex items-center gap-3">
           <div className="space-y-1">
-            <label className="text-[11px] font-mono text-slate-400 uppercase tracking-wider block">
+            <label className="text-[11px] font-mono text-[#78716c] uppercase tracking-wider block">
               Scheduling Algorithm
             </label>
             <select
@@ -110,7 +110,7 @@ export const ProcessInputTable: React.FC<ProcessInputTableProps> = ({
                 onResetSimulation();
               }}
               aria-label="Scheduling Algorithm"
-              className="bg-[#080c16] border border-[#212f4d] text-cyan-300 text-sm font-semibold rounded-lg px-3 py-2 outline-none focus:border-cyan-500 transition-colors"
+              className="bg-[#f4f0e5] border border-[#dfd7c6] text-[#1e4569] text-sm font-semibold rounded-lg px-3 py-2 outline-none focus:border-[#2d5a88] transition-colors"
             >
               {Object.values(schedulers).map((algo) => (
                 <option key={algo.id} value={algo.id}>
@@ -123,7 +123,7 @@ export const ProcessInputTable: React.FC<ProcessInputTableProps> = ({
           {/* Time Quantum (Round Robin only) */}
           {currentAlgoMeta.requiresQuantum && (
             <div className="space-y-1">
-              <label className="text-[11px] font-mono text-amber-400 uppercase tracking-wider block">
+              <label className="text-[11px] font-mono text-[#7d4e08] uppercase tracking-wider block">
                 Time Quantum (q)
               </label>
               <input
@@ -133,7 +133,7 @@ export const ProcessInputTable: React.FC<ProcessInputTableProps> = ({
                 value={quantum}
                 onChange={(e) => onQuantumChange(Math.max(1, parseInt(e.target.value) || 1))}
                 aria-label="Time Quantum"
-                className="w-24 bg-[#080c16] border border-[#212f4d] text-amber-300 text-sm font-mono font-bold rounded-lg px-3 py-2 outline-none focus:border-amber-500"
+                className="w-24 bg-[#fbf3e4] border border-[#ecd6b2] text-[#7d4e08] text-sm font-mono font-bold rounded-lg px-3 py-2 outline-none focus:border-[#b45309]"
               />
             </div>
           )}
@@ -142,14 +142,14 @@ export const ProcessInputTable: React.FC<ProcessInputTableProps> = ({
         {/* Presets and Randomizer */}
         <div className="flex flex-wrap items-center gap-2">
           <div className="space-y-1">
-            <label className="text-[11px] font-mono text-slate-400 uppercase tracking-wider block">
+            <label className="text-[11px] font-mono text-[#78716c] uppercase tracking-wider block">
               Preset Scenarios
             </label>
             <select
               value={selectedPresetId}
               onChange={(e) => handleLoadPreset(e.target.value)}
               aria-label="Preset Scenarios"
-              className="bg-[#080c16] border border-[#212f4d] text-slate-200 text-xs rounded-lg px-3 py-2 outline-none focus:border-cyan-500"
+              className="bg-[#f4f0e5] border border-[#dfd7c6] text-[#2c2825] text-xs rounded-lg px-3 py-2 outline-none focus:border-[#2d5a88]"
             >
               {SCHEDULER_PRESETS.map((preset) => (
                 <option key={preset.id} value={preset.id}>
@@ -163,16 +163,16 @@ export const ProcessInputTable: React.FC<ProcessInputTableProps> = ({
             <button
               onClick={handleGenerateRandom}
               title="Generate Random Processes"
-              className="px-3 py-2 bg-[#172033] hover:bg-slate-800 border border-[#212f4d] text-slate-200 rounded-lg text-xs font-medium flex items-center gap-1.5 transition-colors"
+              className="px-3 py-2 bg-[#eee8db] hover:bg-[#e4ddd0] border border-[#dfd7c6] text-[#2c2825] rounded-lg text-xs font-medium flex items-center gap-1.5 transition-colors"
             >
-              <Shuffle className="w-3.5 h-3.5 text-cyan-400" />
+              <Shuffle className="w-3.5 h-3.5 text-[#2d5a88]" />
               Randomize
             </button>
 
             <button
               onClick={() => onProcessesChange([])}
               title="Clear all processes"
-              className="px-3 py-2 bg-[#172033] hover:bg-rose-950/60 border border-[#212f4d] text-rose-300 rounded-lg text-xs font-medium flex items-center gap-1.5 transition-colors"
+              className="px-3 py-2 bg-[#eee8db] hover:bg-[#fbf0f0] border border-[#dfd7c6] text-[#9f1239] rounded-lg text-xs font-medium flex items-center gap-1.5 transition-colors"
             >
               <Trash2 className="w-3.5 h-3.5" />
               Clear
@@ -185,7 +185,7 @@ export const ProcessInputTable: React.FC<ProcessInputTableProps> = ({
       <div className="overflow-x-auto">
         <table className="w-full text-left text-xs font-mono">
           <thead>
-            <tr className="border-b border-[#1b253b] text-slate-400">
+            <tr className="border-b border-[#dfd7c6] text-[#78716c]">
               <th className="pb-2.5 font-medium">Process</th>
               <th className="pb-2.5 font-medium">Arrival Time (AT)</th>
               <th className="pb-2.5 font-medium">Burst Time (BT)</th>
@@ -193,19 +193,19 @@ export const ProcessInputTable: React.FC<ProcessInputTableProps> = ({
               <th className="pb-2.5 text-right font-medium">Action</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-[#151c2e]">
+          <tbody className="divide-y divide-[#dfd7c6]/60">
             {processes.map((p) => (
-              <tr key={p.id} className="hover:bg-[#12192c]/50 transition-colors">
+              <tr key={p.id} className="hover:bg-[#f5f0e1]/60 transition-colors">
                 <td className="py-2.5 flex items-center gap-2">
                   <div
-                    className="w-3 h-3 rounded-full shrink-0"
+                    className="w-3 h-3 rounded-full shrink-0 border border-[#dfd7c6]"
                     style={{ backgroundColor: p.color }}
                   />
                   <input
                     type="text"
                     value={p.name}
                     onChange={(e) => handleUpdateProcess(p.id, 'name', e.target.value)}
-                    className="w-20 bg-transparent text-slate-100 font-bold border-b border-transparent hover:border-slate-600 focus:border-cyan-400 outline-none"
+                    className="w-20 bg-transparent text-[#2c2825] font-bold border-b border-transparent hover:border-[#dfd7c6] focus:border-[#2d5a88] outline-none"
                   />
                 </td>
                 <td className="py-2.5">
@@ -217,7 +217,7 @@ export const ProcessInputTable: React.FC<ProcessInputTableProps> = ({
                     onChange={(e) =>
                       handleUpdateProcess(p.id, 'arrivalTime', Math.max(0, parseInt(e.target.value) || 0))
                     }
-                    className="w-16 bg-[#080c16] border border-[#1b253b] rounded px-2 py-1 text-slate-200 outline-none focus:border-cyan-500"
+                    className="w-16 bg-[#f4f0e5] border border-[#dfd7c6] rounded px-2 py-1 text-[#2c2825] outline-none focus:border-[#2d5a88]"
                   />
                 </td>
                 <td className="py-2.5">
@@ -229,7 +229,7 @@ export const ProcessInputTable: React.FC<ProcessInputTableProps> = ({
                     onChange={(e) =>
                       handleUpdateProcess(p.id, 'burstTime', Math.max(1, parseInt(e.target.value) || 1))
                     }
-                    className="w-16 bg-[#080c16] border border-[#1b253b] rounded px-2 py-1 text-slate-200 outline-none focus:border-cyan-500"
+                    className="w-16 bg-[#f4f0e5] border border-[#dfd7c6] rounded px-2 py-1 text-[#2c2825] outline-none focus:border-[#2d5a88]"
                   />
                 </td>
                 <td className="py-2.5">
@@ -241,13 +241,13 @@ export const ProcessInputTable: React.FC<ProcessInputTableProps> = ({
                     onChange={(e) =>
                       handleUpdateProcess(p.id, 'priority', Math.max(1, parseInt(e.target.value) || 1))
                     }
-                    className="w-16 bg-[#080c16] border border-[#1b253b] rounded px-2 py-1 text-slate-200 outline-none focus:border-cyan-500"
+                    className="w-16 bg-[#f4f0e5] border border-[#dfd7c6] rounded px-2 py-1 text-[#2c2825] outline-none focus:border-[#2d5a88]"
                   />
                 </td>
                 <td className="py-2.5 text-right">
                   <button
                     onClick={() => handleRemoveProcess(p.id)}
-                    className="text-slate-500 hover:text-rose-400 p-1 rounded transition-colors"
+                    className="text-[#a8a29e] hover:text-[#9f1239] p-1 rounded transition-colors"
                   >
                     <Trash2 className="w-3.5 h-3.5" />
                   </button>
@@ -262,14 +262,14 @@ export const ProcessInputTable: React.FC<ProcessInputTableProps> = ({
       <div className="pt-2 flex items-center justify-between">
         <button
           onClick={handleAddProcess}
-          className="px-3 py-1.5 bg-cyan-950/60 hover:bg-cyan-900 border border-cyan-700/50 text-cyan-300 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all"
+          className="px-3 py-1.5 bg-[#ebf2f8] hover:bg-[#dbe6f0] border border-[#c8d9e8] text-[#1e4569] rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all"
         >
           <Plus className="w-4 h-4" />
           Add Process
         </button>
 
-        <span className="text-xs text-slate-400 font-mono">
-          Total Processes: <strong className="text-slate-200">{processes.length}</strong>
+        <span className="text-xs text-[#78716c] font-mono">
+          Total Processes: <strong className="text-[#2c2825]">{processes.length}</strong>
         </span>
       </div>
     </div>

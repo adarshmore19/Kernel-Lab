@@ -4,36 +4,36 @@
   --font-mono: 'JetBrains Mono', 'Fira Code', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   
-  --color-lab-bg: #090d16;
-  --color-lab-card: #0f1422;
-  --color-lab-card-hover: #151c2e;
-  --color-lab-border: #1e293b;
-  --color-lab-border-subtle: #172033;
-  --color-lab-muted: #64748b;
-  --color-lab-text: #e2e8f0;
+  --color-lab-bg: #f7f4ea;
+  --color-lab-card: #fdfbf6;
+  --color-lab-card-hover: #f5f0e1;
+  --color-lab-border: #dfd7c6;
+  --color-lab-border-subtle: #eae4d5;
+  --color-lab-muted: #78716c;
+  --color-lab-text: #2c2825;
   
-  --color-terminal-bg: #090d14;
-  --color-terminal-bar: #0f1420;
-  --color-terminal-border: #1e2738;
+  --color-terminal-bg: #faf7ef;
+  --color-terminal-bar: #ede7da;
+  --color-terminal-border: #dfd7c6;
 }
 
-/* Custom Scrollbars */
+/* Custom Scrollbars - Warm Cream Paper Minimal */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #090d16;
+  background: #f7f4ea;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #1e293b;
+  background: #d6cebf;
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #334155;
+  background: #b8ad99;
 }
 
 /* Monospace code styling */
@@ -41,21 +41,8 @@ code, kbd, samp, pre {
   font-family: var(--font-mono);
 }
 
-/* Terminal scanline and subtle glow utilities */
-.glow-cyan-sm {
-  box-shadow: 0 0 15px -3px rgba(56, 189, 248, 0.15);
-}
-
-.glow-emerald-sm {
-  box-shadow: 0 0 15px -3px rgba(52, 211, 153, 0.15);
-}
-
-.glow-amber-sm {
-  box-shadow: 0 0 15px -3px rgba(245, 158, 11, 0.15);
-}
-
-/* Subtle dot grid pattern */
+/* Studious warm paper subtle pattern */
 .bg-grid-pattern {
-  background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(44, 40, 37, 0.05) 1px, transparent 1px);
   background-size: 24px 24px;
 }

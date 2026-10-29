@@ -5,7 +5,6 @@ import {
   Layers,
   LayoutDashboard,
   Trophy,
-  BookOpen,
   Menu,
   X,
   Search,
@@ -41,33 +40,33 @@ export const Navbar: React.FC<NavbarProps> = ({
   };
 
   return (
-    <header className="sticky top-0 z-50 bg-[#090d16]/95 backdrop-blur border-b border-[#1b253b]">
+    <header className="sticky top-0 z-50 bg-[#fdfbf6]/95 backdrop-blur border-b border-[#dfd7c6]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         {/* Logo */}
         <div
           onClick={() => onSelectTab('dashboard')}
           className="flex items-center gap-2.5 cursor-pointer select-none group"
         >
-          <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center shadow-lg shadow-cyan-500/20 group-hover:scale-105 transition-transform">
-            <Cpu className="w-5 h-5 text-slate-950 stroke-[2.5]" />
+          <div className="w-9 h-9 rounded-lg bg-[#2d5a88] flex items-center justify-center text-white shadow-xs">
+            <Cpu className="w-5 h-5 text-white stroke-[2]" />
           </div>
           <div>
             <div className="flex items-center gap-1.5">
-              <span className="font-bold text-base tracking-tight text-white font-mono">
-                Kernel<span className="text-cyan-400">Lab</span>
+              <span className="font-bold text-base tracking-tight text-[#2c2825] font-mono">
+                Kernel<span className="text-[#2d5a88]">Lab</span>
               </span>
-              <span className="px-1.5 py-0.2 text-[9px] uppercase font-bold tracking-wider rounded bg-cyan-950 text-cyan-300 border border-cyan-800/40">
+              <span className="px-1.5 py-0.2 text-[9px] uppercase font-bold tracking-wider rounded bg-[#eee8db] text-[#57534e] border border-[#dfd7c6]">
                 v1.0
               </span>
             </div>
-            <p className="text-[10px] text-slate-400 hidden sm:block">
+            <p className="text-[10px] text-[#78716c] hidden sm:block">
               Interactive OS & Linux Laboratory
             </p>
           </div>
         </div>
 
         {/* Desktop Navigation Links */}
-        <nav className="hidden md:flex items-center gap-1 bg-[#0e1424] border border-[#1e2a42] p-1 rounded-xl">
+        <nav className="hidden md:flex items-center gap-1 bg-[#eee8db] border border-[#dfd7c6] p-1 rounded-xl">
           {navItems.map((item) => {
             const isActive = activeTab === item.id;
             return (
@@ -76,8 +75,8 @@ export const Navbar: React.FC<NavbarProps> = ({
                 onClick={() => handleTabClick(item.id)}
                 className={`flex items-center gap-2 px-3.5 py-2 rounded-lg text-xs font-semibold transition-all ${
                   isActive
-                    ? 'bg-cyan-950/80 text-cyan-300 border border-cyan-700/40 shadow-sm'
-                    : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/50 border border-transparent'
+                    ? 'bg-[#fdfbf6] text-[#2d5a88] shadow-xs border border-[#dfd7c6]'
+                    : 'text-[#57534e] hover:text-[#2c2825] hover:bg-[#e4ddd0] border border-transparent'
                 }`}
               >
                 {item.icon}
@@ -92,21 +91,21 @@ export const Navbar: React.FC<NavbarProps> = ({
           <button
             onClick={onOpenCheatSheet}
             title="Linux Command Reference (Cheat Sheet)"
-            className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 bg-[#0e1424] hover:bg-slate-800 border border-[#1e2a42] rounded-lg text-xs text-slate-300 transition-colors"
+            className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 bg-[#fdfbf6] hover:bg-[#f5f0e1] border border-[#dfd7c6] rounded-lg text-xs text-[#2c2825] transition-colors shadow-xs"
           >
-            <Search className="w-3.5 h-3.5 text-cyan-400" />
+            <Search className="w-3.5 h-3.5 text-[#2d5a88]" />
             <span className="font-mono">Cheat Sheet</span>
           </button>
 
-          <div className="flex items-center gap-1.5 px-3 py-1.5 bg-amber-950/40 border border-amber-800/40 rounded-lg text-xs text-amber-300 font-mono font-bold shadow-sm">
-            <Trophy className="w-3.5 h-3.5 text-amber-400" />
+          <div className="flex items-center gap-1.5 px-3 py-1.5 bg-[#fbf3e4] border border-[#ecd6b2] rounded-lg text-xs text-[#7d4e08] font-mono font-bold shadow-xs">
+            <Trophy className="w-3.5 h-3.5 text-[#b45309]" />
             <span>{xp} XP</span>
           </div>
 
           {/* Mobile hamburger toggle */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800 transition-colors"
+            className="md:hidden p-2 text-[#57534e] hover:text-[#2c2825] rounded-lg hover:bg-[#eee8db] transition-colors"
             aria-label="Toggle Navigation Menu"
           >
             {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -116,31 +115,21 @@ export const Navbar: React.FC<NavbarProps> = ({
 
       {/* Mobile Navigation Drawer */}
       {mobileMenuOpen && (
-        <div className="md:hidden px-4 pt-2 pb-4 bg-[#0d121f] border-b border-[#1b253b] space-y-1">
+        <div className="md:hidden px-4 pt-2 pb-4 bg-[#fdfbf6] border-b border-[#dfd7c6] space-y-1">
           {navItems.map((item) => (
             <button
               key={item.id}
               onClick={() => handleTabClick(item.id)}
-              className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-xs font-semibold ${
+              className={`w-full flex items-center gap-2 px-3 py-2 rounded-lg text-xs font-semibold ${
                 activeTab === item.id
-                  ? 'bg-cyan-950 text-cyan-300 border border-cyan-800/50'
-                  : 'text-slate-300 hover:bg-slate-800'
+                  ? 'bg-[#eee8db] text-[#2d5a88]'
+                  : 'text-[#57534e] hover:bg-[#eee8db]'
               }`}
             >
               {item.icon}
               <span>{item.label}</span>
             </button>
           ))}
-          <button
-            onClick={() => {
-              onOpenCheatSheet();
-              setMobileMenuOpen(false);
-            }}
-            className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-xs font-semibold text-slate-300 hover:bg-slate-800"
-          >
-            <BookOpen className="w-4 h-4 text-cyan-400" />
-            <span>Command Cheat Sheet</span>
-          </button>
         </div>
       )}
     </header>
