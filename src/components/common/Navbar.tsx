@@ -4,18 +4,18 @@ import {
   Cpu,
   Layers,
   LayoutDashboard,
-  Trophy,
   Menu,
   X,
   Search,
+  BookOpen,
 } from 'lucide-react';
 
-export type NavTab = 'dashboard' | 'linux' | 'scheduler' | 'labs';
+export type NavTab = 'dashboard' | 'theory' | 'linux' | 'scheduler' | 'labs';
 
 interface NavbarProps {
   activeTab: NavTab;
   onSelectTab: (tab: NavTab) => void;
-  xp: number;
+  xp?: number;
   onOpenCheatSheet: () => void;
 }
 
@@ -29,6 +29,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   const navItems: Array<{ id: NavTab; label: string; icon: React.ReactNode }> = [
     { id: 'dashboard', label: 'Dashboard', icon: <LayoutDashboard className="w-4 h-4" /> },
+    { id: 'theory', label: 'OS Theory', icon: <BookOpen className="w-4 h-4" /> },
     { id: 'linux', label: 'Linux Lab', icon: <Terminal className="w-4 h-4" /> },
     { id: 'scheduler', label: 'CPU Scheduler', icon: <Cpu className="w-4 h-4" /> },
     { id: 'labs', label: 'OS Concept Labs', icon: <Layers className="w-4 h-4" /> },
@@ -41,11 +42,11 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   return (
     <header className="sticky top-0 z-50 bg-[#fdfbf6]/95 backdrop-blur border-b border-[#dfd7c6]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4 lg:gap-8">
         {/* Logo */}
         <div
           onClick={() => onSelectTab('dashboard')}
-          className="flex items-center gap-2.5 cursor-pointer select-none group"
+          className="flex items-center gap-2.5 cursor-pointer select-none group shrink-0"
         >
           <div className="w-9 h-9 rounded-lg bg-[#2d5a88] flex items-center justify-center text-white shadow-xs">
             <Cpu className="w-5 h-5 text-white stroke-[2]" />
@@ -66,14 +67,14 @@ export const Navbar: React.FC<NavbarProps> = ({
         </div>
 
         {/* Desktop Navigation Links */}
-        <nav className="hidden md:flex items-center gap-1 bg-[#eee8db] border border-[#dfd7c6] p-1 rounded-xl">
+        <nav className="hidden md:flex items-center gap-1 bg-[#eee8db] border border-[#dfd7c6] p-1 rounded-xl shrink-0">
           {navItems.map((item) => {
             const isActive = activeTab === item.id;
             return (
               <button
                 key={item.id}
                 onClick={() => handleTabClick(item.id)}
-                className={`flex items-center gap-2 px-3.5 py-2 rounded-lg text-xs font-semibold transition-all ${
+                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all whitespace-nowrap ${
                   isActive
                     ? 'bg-[#fdfbf6] text-[#2d5a88] shadow-xs border border-[#dfd7c6]'
                     : 'text-[#57534e] hover:text-[#2c2825] hover:bg-[#e4ddd0] border border-transparent'
@@ -87,7 +88,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         </nav>
 
         {/* Right Action Icons & XP Counter */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 shrink-0 pl-3 sm:pl-6">
           <button
             onClick={onOpenCheatSheet}
             title="Linux Command Reference (Cheat Sheet)"
@@ -96,11 +97,6 @@ export const Navbar: React.FC<NavbarProps> = ({
             <Search className="w-3.5 h-3.5 text-[#2d5a88]" />
             <span className="font-mono">Cheat Sheet</span>
           </button>
-
-          <div className="flex items-center gap-1.5 px-3 py-1.5 bg-[#fbf3e4] border border-[#ecd6b2] rounded-lg text-xs text-[#7d4e08] font-mono font-bold shadow-xs">
-            <Trophy className="w-3.5 h-3.5 text-[#b45309]" />
-            <span>{xp} XP</span>
-          </div>
 
           {/* Mobile hamburger toggle */}
           <button

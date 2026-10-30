@@ -11,6 +11,8 @@ import {
   Trophy,
   Clock,
   Info,
+  BookOpen,
+  Sparkles,
 } from 'lucide-react';
 import { NavTab } from '../components/common/Navbar';
 import { CURRICULUM_MODULES } from '../data/curriculum/modules';
@@ -125,12 +127,20 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({
 
           <div className="pt-2 flex flex-wrap items-center gap-3">
             <button
-              onClick={() => onNavigate('linux')}
+              onClick={() => onNavigate('theory')}
               className="px-5 py-2.5 bg-[#2d5a88] hover:bg-[#23476d] text-white rounded-xl text-xs sm:text-sm font-semibold flex items-center gap-2 shadow-xs transition-colors active:scale-95"
             >
-              <Terminal className="w-4 h-4" />
-              <span>Resume Linux Curriculum</span>
+              <BookOpen className="w-4 h-4" />
+              <span>OS Theory & Animations</span>
               <ArrowRight className="w-4 h-4" />
+            </button>
+
+            <button
+              onClick={() => onNavigate('linux')}
+              className="px-5 py-2.5 bg-[#fdfbf6] hover:bg-[#f5f0e1] border border-[#dfd7c6] text-[#2c2825] rounded-xl text-xs sm:text-sm font-semibold flex items-center gap-2 transition-colors active:scale-95"
+            >
+              <Terminal className="w-4 h-4 text-[#2d5a88]" />
+              <span>Linux Shell Lab</span>
             </button>
 
             <button
@@ -138,7 +148,7 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({
               className="px-5 py-2.5 bg-[#fdfbf6] hover:bg-[#f5f0e1] border border-[#dfd7c6] text-[#2c2825] rounded-xl text-xs sm:text-sm font-semibold flex items-center gap-2 transition-colors"
             >
               <Cpu className="w-4 h-4 text-[#1e5327]" />
-              <span>Launch Scheduler Simulator</span>
+              <span>Scheduler Lab</span>
             </button>
           </div>
         </div>
@@ -237,6 +247,110 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({
             <span>Explore Concept Labs</span>
             <ArrowRight className="w-3.5 h-3.5" />
           </button>
+        </div>
+      </div>
+
+      {/* Featured OS Theory Curriculum & Industrial Animations Section */}
+      <div className="space-y-4">
+        <div className="flex flex-wrap items-center justify-between gap-2 pb-1">
+          <div>
+            <div className="flex items-center gap-2">
+              <BookOpen className="w-5 h-5 text-[#2d5a88]" />
+              <h2 className="text-base font-bold text-[#2c2825] uppercase tracking-wider font-mono">
+                OS THEORY & INDUSTRIAL APPLICATIONS
+              </h2>
+              <span className="text-xs font-mono font-semibold text-[#1e5327]">
+                • Units I - V
+              </span>
+            </div>
+            <p className="text-xs text-[#78716c] mt-0.5">
+              Interactive animations, dual-mode traps, Gantt charts, deadlock RAGs, page replacement, and real-world tech case studies.
+            </p>
+          </div>
+          <button
+            onClick={() => onNavigate('theory')}
+            className="text-xs font-mono font-bold text-[#2d5a88] hover:underline flex items-center gap-1"
+          >
+            <span>View All 5 Units</span>
+            <ArrowRight className="w-3.5 h-3.5" />
+          </button>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-3">
+          {[
+            {
+              unit: 'UNIT-I',
+              title: 'OS Foundations & RTOS',
+              desc: 'What is OS, Batch, Time-sharing, SMP, Dual-mode syscalls, RTOS deadlines & Distributed systems.',
+              caseStudy: 'NASA & Tesla (VxWorks / FreeRTOS)',
+              topicId: 'u1-what-is-os',
+              color: 'text-[#2d5a88]',
+              border: 'border-[#dfd7c6]',
+            },
+            {
+              unit: 'UNIT-II',
+              title: 'Processes, Threads & IPC',
+              desc: '5-State process machine, PCB, 1:1 vs M:1 thread models, zero-copy shared memory vs message passing.',
+              caseStudy: 'Citadel HFT & Netflix Threads',
+              topicId: 'u2-process-concept',
+              color: 'text-[#1e5327]',
+              border: 'border-[#dfd7c6]',
+            },
+            {
+              unit: 'UNIT-III',
+              title: 'CPU Scheduling & Deadlocks',
+              desc: 'FCFS, SJF, SRTF, Round Robin, Priority Aging, 4 Coffman conditions & Banker algorithm.',
+              caseStudy: 'PostgreSQL & Linux CFS',
+              topicId: 'u3-scheduling-criteria',
+              color: 'text-[#b45309]',
+              border: 'border-[#dfd7c6]',
+            },
+            {
+              unit: 'UNIT-IV',
+              title: 'Memory Mgmt & Virtual Memory',
+              desc: 'Dynamic partitions (First/Best/Worst fit), Compaction, Paging & TLB, Demand paging, FIFO/LRU/OPT.',
+              caseStudy: 'Intel x86 MMU & Redis Jemalloc',
+              topicId: 'u4-memory-requirements',
+              color: 'text-[#4338ca]',
+              border: 'border-[#dfd7c6]',
+            },
+            {
+              unit: 'UNIT-V',
+              title: 'Storage & File Systems',
+              desc: 'Sequential vs Direct access, Directory trees, Hard/Soft links, Contiguous, Linked & Inode indexing.',
+              caseStudy: 'Linux Ext4 & AWS EBS NVMe',
+              topicId: 'u5-file-concepts-access',
+              color: 'text-[#6b21a8]',
+              border: 'border-[#dfd7c6]',
+            },
+          ].map((item, idx) => (
+            <div
+              key={idx}
+              onClick={() => onNavigate('theory', item.topicId)}
+              className="p-4 rounded-xl bg-white border border-[#dfd7c6] hover:border-[#2d5a88] hover:bg-[#f5f0e1]/40 transition-all cursor-pointer group flex flex-col justify-between space-y-2 shadow-xs"
+            >
+              <div>
+                <div className="flex items-center justify-between mb-1">
+                  <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#78716c]">
+                    {item.unit}
+                  </span>
+                  <Sparkles className="w-3.5 h-3.5 text-[#2d5a88] opacity-70 group-hover:scale-110 transition-transform" />
+                </div>
+                <h3 className={`text-xs font-bold font-mono mt-1 ${item.color}`}>
+                  {item.title}
+                </h3>
+                <p className="text-[11px] text-[#78716c] leading-snug mt-1">
+                  {item.desc}
+                </p>
+              </div>
+
+              <div className="pt-2 border-t border-[#dfd7c6]/60">
+                <span className="text-[10px] font-mono text-[#57534e] block truncate font-semibold">
+                  🏢 {item.caseStudy}
+                </span>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
 

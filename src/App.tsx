@@ -4,6 +4,7 @@ import { DashboardPage } from './pages/DashboardPage';
 import { LinuxLabPage } from './pages/LinuxLabPage';
 import { SchedulerLabPage } from './pages/SchedulerLabPage';
 import { LabsPage } from './pages/LabsPage';
+import { OSTheoryPage } from './pages/OSTheoryPage';
 import { CheatSheetModal } from './components/common/CheatSheetModal';
 import { useVirtualTerminal } from './hooks/useVirtualTerminal';
 import { useUserProgress } from './hooks/useUserProgress';
@@ -11,6 +12,7 @@ import { useUserProgress } from './hooks/useUserProgress';
 export function App() {
   const [activeTab, setActiveTab] = useState<NavTab>('dashboard');
   const [targetLessonId, setTargetLessonId] = useState<string | undefined>();
+  const [targetTheoryTopicId, setTargetTheoryTopicId] = useState<string | undefined>();
   const [isCheatSheetOpen, setIsCheatSheetOpen] = useState<boolean>(false);
 
   // User progress hook
@@ -33,11 +35,13 @@ export function App() {
     getAutocompleteSuggestions,
   } = useVirtualTerminal();
 
-  const handleNavigate = (tab: NavTab, lessonId?: string) => {
+  const handleNavigate = (tab: NavTab, targetId?: string) => {
     setActiveTab(tab);
-    if (lessonId) {
-      setTargetLessonId(lessonId);
-      setLastActiveLesson(lessonId);
+    if (tab === 'theory') {
+      setTargetTheoryTopicId(targetId);
+    } else if (targetId) {
+      setTargetLessonId(targetId);
+      setLastActiveLesson(targetId);
     }
   };
 
@@ -54,6 +58,7 @@ export function App() {
         onSelectTab={(tab) => {
           setActiveTab(tab);
           setTargetLessonId(undefined);
+          setTargetTheoryTopicId(undefined);
         }}
         xp={progress.xp}
         onOpenCheatSheet={() => setIsCheatSheetOpen(true)}
@@ -69,6 +74,10 @@ export function App() {
             xp={progress.xp}
             recentCommands={context.history}
           />
+        )}
+
+        {activeTab === 'theory' && (
+          <OSTheoryPage initialTopicId={targetTheoryTopicId} />
         )}
 
         {activeTab === 'linux' && (
